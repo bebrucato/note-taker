@@ -1,25 +1,14 @@
 {
-  "dependencies": {
-    "express": "^4.17.1"
-  },
-  "scripts": {
-    "start": "node server.js"
-  },
   "name": "note-taker",
-  "description": "",
   "version": "1.0.0",
+  "description": "",
   "main": "server.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bebrucato/note-taker.git"
-  },
-  "engines": {
-    "node": "14.x"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bebrucato/note-taker/issues"
-  },
-  "homepage": "https://github.com/bebrucato/note-taker#readme"
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
