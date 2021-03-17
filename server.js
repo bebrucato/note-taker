@@ -28,6 +28,7 @@ app.get("/api/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "db/db.json"))
 });
 
+//Posting notes from the app to the db.json
 app.post("/api/notes", (req, res) => {
     const dbNotes = JSON.parse(fs.readFileSync("db/db.json"));
     const newNotes = req.body;
@@ -36,6 +37,13 @@ app.post("/api/notes", (req, res) => {
     fs.writeFileSync("db/db.json", JSON.stringify(dbNotes));
     res.json(dbNotes);
 });
+
+app.delete("/api/notes./:id", (req,res) => {
+    const dbNotes = JSON.parse(fs.readFileSync("db/db.json"));
+    const trash = dbNotes.filter((delNote) => delNote.id !== req.params.id);
+    fs.writeFileSync("db/db.json", JSON.stringify(trash));
+    res.json(trash); 
+})
 
 app.listen(PORT, function() {
     console.log("Listening on PORT: " + PORT)
