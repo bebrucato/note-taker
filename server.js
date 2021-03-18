@@ -2,6 +2,7 @@ const fs = require('fs');
 const express = require('express');
 const path = require('path');
 const uuid = require('uuid');
+const dbJson = require('./db/db.json')
 
 
 
@@ -25,23 +26,23 @@ app.get("/", function (req, res) {
 
 //Route retrieving the API for the saved notes and joins them with the "db.json"
 app.get("/api/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "db/db.json"))
+    res.sendFile(path.join(__dirname, "./db/db.json"))
 });
 
 //Posting notes from the app to the db.json
 app.post("/api/notes", (req, res) => {
-    const dbNotes = JSON.parse(fs.readFileSync("db/db.json"));
+    const dbNotes = JSON.parse(fs.readFileSync("./db/db.json"));
     const newNotes = req.body;
     newNotes.id = uuid.v4();
     dbNotes.push(newNotes);
-    fs.writeFileSync("db/db.json", JSON.stringify(dbNotes));
+    fs.writeFileSync("./db/db.json", JSON.stringify(dbNotes));
     res.json(dbNotes);
 });
 
 app.delete("/api/notes/:id", (req,res) => {
-    const dbNotes = JSON.parse(fs.readFileSync("db/db.json"));
+    const dbNotes = JSON.parse(fs.readFileSync("./db/db.json"));
     const trash = dbNotes.filter((delNote) => delNote.id !== req.params.id);
-    fs.writeFileSync("db/db.json", JSON.stringify(trash));
+    fs.writeFileSync("./db/db.json", JSON.stringify(trash));
     res.json(trash); 
 })
 
