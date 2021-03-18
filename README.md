@@ -32,4 +32,5 @@ The contributor on this app is myself, Briana Brucato.
 
 ## URLs
 [GitHub URL](https://github.com/bebrucato/note-taker)
+
 [Deployed App on Heroku](https://gentle-springs-84762.herokuapp.com/)
