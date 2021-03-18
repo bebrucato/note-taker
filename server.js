@@ -7,7 +7,7 @@ const dbJson = require('./db/db.json')
 
 
 //Express/PORT
-const app = express()
+const app = express();
 const PORT = process.env.PORT || 3060;
 
 //Registering the middleware
@@ -31,18 +31,18 @@ app.get("/api/notes", function (req, res) {
 
 //Posting notes on the app/dbjson
 app.post("/api/notes", (req, res) => {
-    const dbNotes = JSON.parse(fs.readFileSync("./db/db.json"));
+    const dbJson = JSON.parse(fs.readFileSync("./db/db.json"));
     const newNotes = req.body;
     newNotes.id = uuid.v4();
-    dbNotes.push(newNotes);
-    fs.writeFileSync("./db/db.json", JSON.stringify(dbNotes));
-    res.json(dbNotes);
+    dbJson.push(newNotes);
+    fs.writeFileSync("./db/db.json", JSON.stringify(dbJson));
+    res.json(dbJson);
 });
 
 //Deletes the notes from app/dbjson
 app.delete("/api/notes/:id", (req,res) => {
-    const dbNotes = JSON.parse(fs.readFileSync("./db/db.json"));
-    const trash = dbNotes.filter((delNote) => delNote.id !== req.params.id);
+    const dbJson = JSON.parse(fs.readFileSync("./db/db.json"));
+    const trash = dbJson.filter((delNote) => delNote.id !== req.params.id);
     fs.writeFileSync("./db/db.json", JSON.stringify(trash));
     res.json(trash); 
 })
