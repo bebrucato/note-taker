@@ -29,7 +29,7 @@ app.get("/api/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "./db/db.json"))
 });
 
-//Posting notes from the app to the db.json
+//Posting notes on the app/dbjson
 app.post("/api/notes", (req, res) => {
     const dbNotes = JSON.parse(fs.readFileSync("./db/db.json"));
     const newNotes = req.body;
@@ -39,6 +39,7 @@ app.post("/api/notes", (req, res) => {
     res.json(dbNotes);
 });
 
+//Deletes the notes from app/dbjson
 app.delete("/api/notes/:id", (req,res) => {
     const dbNotes = JSON.parse(fs.readFileSync("./db/db.json"));
     const trash = dbNotes.filter((delNote) => delNote.id !== req.params.id);
