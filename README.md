@@ -10,11 +10,9 @@ The Note Taker app is an easy way to create a to-do list, reminders and notes fo
 
 [Contributor](#contributor)
 
-[Demo](#demo)
-
 [Screenshots](#screenshots)
 
-[GitHub Repository](#repository)
+[URLs](#urls)
 
 ## Installation
 To use this app you must have a Heroku account, install Node/NPM, the Express package and the UUID package.
@@ -25,11 +23,13 @@ The license used is [![License: ISC](https://img.shields.io/badge/License-ISC-bl
 ## Contributor
 The contributor on this app is myself, Briana Brucato.
 
-## Demo
-[Link to demo video on YouTube]()
 
 ## Screenshots
+[Note Taker Home Page](screenshots\heroku-note1.png)
+
+[Note Taker Note Page](screenshots\heroku-note2.png)
 
 
-## Repository
+## URLs
 [GitHub URL](https://github.com/bebrucato/note-taker)
+[Deployed App on Heroku](https://gentle-springs-84762.herokuapp.com/)
