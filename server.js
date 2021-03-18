@@ -26,7 +26,7 @@ app.get("/", function (req, res) {
 
 //Route retrieving the API for the saved notes and joins them with the "db.json"
 app.get("/api/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "./db/db.json"))
+    res.sendFile(path.join(__dirname, "/db/db.json"))
 });
 
 //Posting notes on the app/dbjson
