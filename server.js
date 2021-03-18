@@ -8,7 +8,7 @@ const dbJson = require('./db/db.json')
 
 //Express/PORT
 const app = express()
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3060;
 
 //Registering the middleware
 app.use(express.urlencoded({extended:true}));
