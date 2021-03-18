@@ -36,7 +36,7 @@ app.post("/api/notes", (req, res) => {
     const newNotes = req.body;
     newNotes.id = uuid.v4();
     dbJson.push(newNotes);
-    fs.writeFileSync("./db/db.json", JSON.stringify(dbJson));
+    fs.writeFileSync("db/db.json", JSON.stringify(dbJson));
     res.json(dbJson);
 });
 
@@ -44,7 +44,7 @@ app.post("/api/notes", (req, res) => {
 app.delete("/api/notes/:id", (req,res) => {
     const dbJson = JSON.parse(fs.readFileSync("db/db.json"));
     const trash = dbJson.filter((delNote) => delNote.id !== req.params.id);
-    fs.writeFileSync("./db/db.json", JSON.stringify(trash));
+    fs.writeFileSync("db/db.json", JSON.stringify(trash));
     res.json(trash); 
 })
 
