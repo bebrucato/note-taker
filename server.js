@@ -2,7 +2,8 @@ const fs = require('fs');
 const express = require('express');
 const path = require('path');
 const uuid = require('uuid');
-const dbJson = require('./db/db.json')
+const dbJson = require('./db/db.json');
+const { DH_CHECK_P_NOT_SAFE_PRIME } = require("constants");
 
 
 
@@ -26,12 +27,12 @@ app.get("/", function (req, res) {
 
 //Route retrieving the API for the saved notes and joins them with the "db.json"
 app.get("/api/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "/db/db.json"))
+    res.sendFile(path.join(__dirname, "db/db.json"))
 });
 
 //Posting notes on the app/dbjson
 app.post("/api/notes", (req, res) => {
-    const dbJson = JSON.parse(fs.readFileSync("./db/db.json"));
+    const dbJson = JSON.parse(fs.readFileSync("db/db.json"));
     const newNotes = req.body;
     newNotes.id = uuid.v4();
     dbJson.push(newNotes);
@@ -41,7 +42,7 @@ app.post("/api/notes", (req, res) => {
 
 //Deletes the notes from app/dbjson
 app.delete("/api/notes/:id", (req,res) => {
-    const dbJson = JSON.parse(fs.readFileSync("./db/db.json"));
+    const dbJson = JSON.parse(fs.readFileSync("db/db.json"));
     const trash = dbJson.filter((delNote) => delNote.id !== req.params.id);
     fs.writeFileSync("./db/db.json", JSON.stringify(trash));
     res.json(trash); 
